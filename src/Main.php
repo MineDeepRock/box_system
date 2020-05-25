@@ -7,8 +7,8 @@ use box_system\pmmp\entities\MedicineBoxEntity;
 use box_system\pmmp\items\SpawnAmmoBoxItem;
 use box_system\pmmp\items\SpawnFlareBoxItem;
 use box_system\pmmp\items\SpawnMedicineBoxItem;
+use box_system\listener\BoxListener;
 use pocketmine\entity\Entity;
-use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\plugin\PluginBase;
@@ -16,6 +16,8 @@ use pocketmine\plugin\PluginBase;
 class Main extends PluginBase
 {
     public function onEnable() {
+
+        new \box_system\controllers\EventController($this);
 
         $this->getLogger()->info("BoxSystemを読み込みました");
         ItemFactory::registerItem(new SpawnAmmoBoxItem(), true);

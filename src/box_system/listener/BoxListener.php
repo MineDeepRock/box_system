@@ -1,12 +1,10 @@
 <?php
 
+namespace box_system\listener;
 
 use box_system\pmmp\entities\AmmoBoxEntity;
 use box_system\pmmp\entities\FlareBoxEntity;
 use box_system\pmmp\entities\MedicineBoxEntity;
-use box_system\pmmp\events\AmmoBoxEffectOnEvent;
-use box_system\pmmp\events\FlareBoxEffectOnEvent;
-use box_system\pmmp\events\MedicineBoxEffectOnEvent;
 use box_system\pmmp\items\SpawnAmmoBoxItem;
 use box_system\pmmp\items\SpawnFlareBoxItem;
 use box_system\pmmp\items\SpawnMedicineBoxItem;
