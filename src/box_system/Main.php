@@ -1,5 +1,6 @@
 <?php
 
+namespace box_system;
 
 use box_system\pmmp\entities\AmmoBoxEntity;
 use box_system\pmmp\entities\FlareBoxEntity;
