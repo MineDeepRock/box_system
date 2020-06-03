@@ -5,6 +5,7 @@ namespace box_system\listener;
 use box_system\pmmp\entities\AmmoBoxEntity;
 use box_system\pmmp\entities\FlareBoxEntity;
 use box_system\pmmp\entities\MedicineBoxEntity;
+use box_system\pmmp\items\BoxItem;
 use box_system\pmmp\items\SpawnAmmoBoxItem;
 use box_system\pmmp\items\SpawnFlareBoxItem;
 use box_system\pmmp\items\SpawnMedicineBoxItem;
@@ -27,25 +28,7 @@ class BoxListener implements Listener
         if ($event->getAction() !== PlayerInteractEvent::RIGHT_CLICK_BLOCK) {
             $player = $event->getPlayer();
             $item = $player->getInventory()->getItemInHand();
-            switch ($item->getId()) {
-                case SpawnAmmoBoxItem::ITEM_ID:
-                    $this->spawnAmmoBox($player);
-                    break;
-                case SpawnMedicineBoxItem::ITEM_ID:
-                    $this->spawnMedicineBox($player);
-                    break;
-                case SpawnFlareBoxItem::ITEM_ID:
-                    $this->spawnFlareBox($player);
-                    break;
-            }
-        }
-    }
-    public function onTapByForTapUser(DataPacketReceiveEvent $event) {
-        $packet = $event->getPacket();
-        if ($packet instanceof LevelSoundEventPacket) {
-            if ($packet->sound === LevelSoundEventPacket::SOUND_ATTACK_NODAMAGE) {
-                $player = $event->getPlayer();
-                $item = $event->getPlayer()->getInventory()->getItemInHand();
+            if ($item instanceof BoxItem) {
                 switch ($item->getId()) {
                     case SpawnAmmoBoxItem::ITEM_ID:
                         $this->spawnAmmoBox($player);
@@ -56,6 +39,29 @@ class BoxListener implements Listener
                     case SpawnFlareBoxItem::ITEM_ID:
                         $this->spawnFlareBox($player);
                         break;
+                }
+            }
+        }
+    }
+
+    public function onTapByForTapUser(DataPacketReceiveEvent $event) {
+        $packet = $event->getPacket();
+        if ($packet instanceof LevelSoundEventPacket) {
+            if ($packet->sound === LevelSoundEventPacket::SOUND_ATTACK_NODAMAGE) {
+                $player = $event->getPlayer();
+                $item = $event->getPlayer()->getInventory()->getItemInHand();
+                if ($item instanceof BoxItem) {
+                    switch ($item->getId()) {
+                        case SpawnAmmoBoxItem::ITEM_ID:
+                            $this->spawnAmmoBox($player);
+                            break;
+                        case SpawnMedicineBoxItem::ITEM_ID:
+                            $this->spawnMedicineBox($player);
+                            break;
+                        case SpawnFlareBoxItem::ITEM_ID:
+                            $this->spawnFlareBox($player);
+                            break;
+                    }
                 }
             }
         }

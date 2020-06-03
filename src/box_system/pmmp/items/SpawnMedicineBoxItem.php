@@ -6,7 +6,7 @@ namespace box_system\pmmp\items;
 
 use pocketmine\item\Item;
 
-class SpawnMedicineBoxItem extends Item
+class SpawnMedicineBoxItem extends BoxItem
 {
     public const ITEM_ID = Item::GOLD_INGOT;
 

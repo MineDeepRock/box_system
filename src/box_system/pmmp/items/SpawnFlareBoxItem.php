@@ -6,7 +6,7 @@ namespace box_system\pmmp\items;
 
 use pocketmine\item\Item;
 
-class SpawnFlareBoxItem extends Item
+class SpawnFlareBoxItem extends BoxItem
 {
     public const ITEM_ID = Item::NETHER_WART;
 
