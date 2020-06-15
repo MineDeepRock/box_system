@@ -1,13 +1,12 @@
 <?php
 
 
-namespace game_system\client;
+namespace box_system\clients;
 
 
 use pocketmine\level\Level;
 use pocketmine\level\particle\AngryVillagerParticle;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
 
 class FlareBoxClient
 {

@@ -7,7 +7,7 @@ namespace box_system\interpreters;
 use box_system\models\FlareBox;
 use box_system\pmmp\entities\BoxEntity;
 use box_system\pmmp\events\FlareBoxEffectOnEvent;
-use game_system\client\FlareBoxClient;
+use box_system\clients\FlareBoxClient;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\scheduler\TaskScheduler;
