@@ -4,10 +4,10 @@
 namespace box_system\interpreters;
 
 
-use box_system\controllers\EventController;
 use box_system\models\AmmoBox;
-use box_system\pmmp\clients\AmmoBoxClient;
+use box_system\clients\AmmoBoxClient;
 use box_system\pmmp\entities\BoxEntity;
+use box_system\pmmp\events\AmmoBoxEffectOnEvent;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\scheduler\TaskScheduler;
@@ -36,7 +36,8 @@ class AmmoBoxInterpreter extends BoxInterpreter
                     $this->owner->getLevel(),
                     $ammoBoxEntity->getPosition());
                 foreach ($this->getWithinRangePlayers($ammoBoxEntity->getPosition()) as $player) {
-                    EventController::getInstance()->callAmmoBoxEffectOnEvent($this->owner,$player);
+                    $event = new AmmoBoxEffectOnEvent($this->owner, $player);
+                    $event->call();
                 }
             }
         }), 20 * 2, 20 * 5);

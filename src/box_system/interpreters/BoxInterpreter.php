@@ -19,6 +19,13 @@ abstract class BoxInterpreter
         $this->box = $box;
     }
 
+    /**
+     * @return Player
+     */
+    public function getOwner(): Player {
+        return $this->owner;
+    }
+
     protected function getWithinRangePlayers(Vector3 $pos): array {
         if ($this->owner->getLevel() === null) return [];
 

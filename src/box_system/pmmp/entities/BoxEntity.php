@@ -31,6 +31,6 @@ abstract class BoxEntity extends GadgetEntity
                     new FloatTag("", $owner->getPitch())
                 ]),
             ]);
-        parent::__construct($level, $owner->getName(), $scheduler, $nbt);
+        parent::__construct($level, $scheduler, $nbt);
     }
 }

@@ -1,15 +1,12 @@
 <?php
 
 
-namespace box_system\pmmp\clients;
+namespace box_system\clients;
 
 
-use pocketmine\entity\Effect;
-use pocketmine\entity\EffectInstance;
 use pocketmine\level\Level;
 use pocketmine\level\particle\HeartParticle;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
 
 class MedicineBoxClient
 {

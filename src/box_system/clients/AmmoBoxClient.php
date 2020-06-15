@@ -1,7 +1,7 @@
 <?php
 
 
-namespace box_system\pmmp\clients;
+namespace box_system\clients;
 
 
 use pocketmine\level\Level;

@@ -4,10 +4,10 @@
 namespace box_system\interpreters;
 
 
-use box_system\controllers\EventController;
 use box_system\models\MedicineBox;
-use box_system\pmmp\clients\MedicineBoxClient;
+use box_system\clients\MedicineBoxClient;
 use box_system\pmmp\entities\BoxEntity;
+use box_system\pmmp\events\MedicineBoxEffectOnEvent;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\scheduler\TaskScheduler;
@@ -38,7 +38,8 @@ class MedicineBoxInterpreter extends BoxInterpreter
                     $this->owner->getLevel(),
                     $medicineBoxEntity->getPosition());
                 foreach ($this->getWithinRangePlayers($medicineBoxEntity->getPosition()) as $player) {
-                    EventController::getInstance()->callMedicineBoxEffectOnEvent($this->owner, $player);
+                    $event = new MedicineBoxEffectOnEvent($this->owner, $player);
+                    $event->call();
                 }
             }
         }), 20 * 2, 20 * 5);

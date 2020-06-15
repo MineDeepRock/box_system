@@ -1,7 +1,7 @@
 <?php
 
 
-namespace game_system\pmmp\client;
+namespace game_system\client;
 
 
 use pocketmine\level\Level;

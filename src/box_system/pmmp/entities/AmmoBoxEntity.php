@@ -6,6 +6,7 @@ namespace box_system\pmmp\entities;
 
 use box_system\interpreters\AmmoBoxInterpreter;
 use box_system\models\AmmoBox;
+use box_system\pmmp\events\BoxStopEvent;
 use pocketmine\level\Level;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
@@ -39,6 +40,8 @@ class AmmoBoxEntity extends BoxEntity
     protected function onDeath(): void {
         $this->handler->cancel();
         $this->interpreter->stop();
+        $event = new BoxStopEvent($this->interpreter->getOwner(), new AmmoBox());
+        $event->call();
         parent::onDeath();
     }
 

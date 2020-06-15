@@ -10,8 +10,7 @@ class AmmoBoxEffectOnEvent extends BoxEffectOnEvent
     private $owner;
     private $receiver;
 
-    public function __construct(Plugin $plugin, Player $owner, Player $receiver) {
-        parent::__construct($plugin);
+    public function __construct(Player $owner, Player $receiver) {
         $this->owner = $owner;
         $this->receiver = $receiver;
     }

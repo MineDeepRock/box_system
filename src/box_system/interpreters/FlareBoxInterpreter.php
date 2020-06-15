@@ -4,11 +4,10 @@
 namespace box_system\interpreters;
 
 
-use box_system\controllers\EventController;
 use box_system\models\FlareBox;
 use box_system\pmmp\entities\BoxEntity;
-use box_system\pmmp\entities\FlareBoxEntity;
-use game_system\pmmp\client\FlareBoxClient;
+use box_system\pmmp\events\FlareBoxEffectOnEvent;
+use game_system\client\FlareBoxClient;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\scheduler\TaskScheduler;
@@ -37,7 +36,8 @@ class FlareBoxInterpreter extends BoxInterpreter
                     $this->owner->getLevel(),
                     $flareBoxEntity->getPosition());
                 foreach ($this->getWithinRangePlayers($flareBoxEntity->getPosition()) as $player) {
-                    EventController::getInstance()->callFlareBoxEffectOnEvent($this->owner,$player);
+                    $event = new FlareBoxEffectOnEvent($this->owner, $player);
+                    $event->call();
                 }
             }
         }), 20 * 2, 20 * 5);

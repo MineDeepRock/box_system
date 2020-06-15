@@ -6,6 +6,7 @@ namespace box_system\pmmp\entities;
 
 use box_system\interpreters\MedicineBoxInterpreter;
 use box_system\models\MedicineBox;
+use box_system\pmmp\events\BoxStopEvent;
 use pocketmine\level\Level;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
@@ -39,6 +40,8 @@ class MedicineBoxEntity extends BoxEntity
     protected function onDeath(): void {
         $this->interpreter->stop();
         $this->handler->cancel();
+        $event = new BoxStopEvent($this->interpreter->getOwner(), new MedicineBox());
+        $event->call();
         parent::onDeath();
     }
 

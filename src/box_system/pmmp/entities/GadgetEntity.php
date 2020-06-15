@@ -36,10 +36,7 @@ class GadgetEntity extends Human
 
     protected $scheduler;
 
-    protected $ownerName;
-
-    public function __construct(Level $level, string $ownerName, TaskScheduler $scheduler, ?CompoundTag $nbt = null) {
-        $this->ownerName = $ownerName;
+    public function __construct(Level $level, TaskScheduler $scheduler, ?CompoundTag $nbt = null) {
         $this->uuid = UUID::fromRandom();
         $this->scheduler = $scheduler;
         $this->initSkin();
@@ -69,12 +66,5 @@ class GadgetEntity extends Human
 
     public function getName(): string {
         return "";
-    }
-
-    /**
-     * @return string
-     */
-    public function getOwnerName(): string {
-        return $this->ownerName;
     }
 }

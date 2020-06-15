@@ -2,11 +2,7 @@
 
 namespace box_system\pmmp\events;
 
-use pocketmine\event\plugin\PluginEvent;
-use pocketmine\plugin\Plugin;
+use pocketmine\event\Event;
 
-class BoxEffectOnEvent extends PluginEvent{
-    public function __construct(Plugin $plugin) {
-        parent::__construct($plugin);
-    }
+class BoxEffectOnEvent extends Event {
 }

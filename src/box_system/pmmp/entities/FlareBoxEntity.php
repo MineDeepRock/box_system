@@ -6,6 +6,7 @@ namespace box_system\pmmp\entities;
 
 use box_system\interpreters\FlareBoxInterpreter;
 use box_system\models\FlareBox;
+use box_system\pmmp\events\BoxStopEvent;
 use pocketmine\level\Level;
 use pocketmine\Player;
 use pocketmine\scheduler\ClosureTask;
@@ -41,6 +42,8 @@ class FlareBoxEntity extends BoxEntity
     protected function onDeath(): void {
         $this->handler->cancel();
         $this->interpreter->stop();
+        $event = new BoxStopEvent($this->interpreter->getOwner(), new FlareBox());
+        $event->call();
         parent::onDeath();
     }
 
