@@ -18,7 +18,6 @@ class Main extends PluginBase
 {
     public function onEnable() {
 
-        $this->getLogger()->info("BoxSystemを読み込みました");
         ItemFactory::registerItem(new SpawnAmmoBoxItem(), true);
         Item::addCreativeItem(Item::get(SpawnAmmoBoxItem::ITEM_ID));
         ItemFactory::registerItem(new SpawnMedicineBoxItem(), true);
