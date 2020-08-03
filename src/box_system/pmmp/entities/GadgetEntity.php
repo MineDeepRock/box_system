@@ -57,10 +57,10 @@ class GadgetEntity extends Human
     private function initSkin(): void {
         $this->setSkin(new Skin(
             $this->skinId,
-            file_get_contents("./plugin_data/MineDeepRock/skin/" . $this->skinName . ".skin"),
+            file_get_contents("./plugin_data/BoxSystem/skin/" . $this->skinName . ".skin"),
             $this->capeData,
             $this->geometryId,
-            file_get_contents("./plugin_data/MineDeepRock/models/" . $this->geometryName)
+            file_get_contents("./plugin_data/BoxSystem/models/" . $this->geometryName)
         ));
     }
 
