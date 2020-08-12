@@ -14,7 +14,13 @@ use pocketmine\scheduler\TaskScheduler;
 
 abstract class BoxEntity extends GadgetEntity
 {
+    /**
+     * @var Player
+     */
+    private $owner;
+
     public function __construct(Level $level, Player $owner, TaskScheduler $scheduler, ?CompoundTag $nbt = null) {
+        $this->owner = $owner;
         $nbt = $nbt ?? new CompoundTag('', [
                 'Pos' => new ListTag('Pos', [
                     new DoubleTag('', $owner->getX()),
@@ -32,5 +38,12 @@ abstract class BoxEntity extends GadgetEntity
                 ]),
             ]);
         parent::__construct($level, $scheduler, $nbt);
+    }
+
+    /**
+     * @return Player
+     */
+    public function getOwner() : Player {
+        return $this->owner;
     }
 }

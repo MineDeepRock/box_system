@@ -98,10 +98,4 @@ class BoxListener implements Listener
 
         $flareBox->spawnToAll();
     }
-
-    public function onDamaged(EntityDamageEvent $event) {
-        if ($event->getEntity() instanceof BoxEntity) {
-            $event->setCancelled();
-        }
-    }
 }
