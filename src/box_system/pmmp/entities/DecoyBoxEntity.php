@@ -15,6 +15,7 @@ use pocketmine\scheduler\TaskScheduler;
 class DecoyBoxEntity extends BoxEntity
 {
     private $handler;
+    public $defaultHP = 20;
 
     public function __construct(
         Level $level,
