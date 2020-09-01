@@ -3,14 +3,14 @@
 namespace box_system\listener;
 
 use box_system\pmmp\entities\AmmoBoxEntity;
-use box_system\pmmp\entities\BoxEntity;
+use box_system\pmmp\entities\DecoyBoxEntity;
 use box_system\pmmp\entities\FlareBoxEntity;
 use box_system\pmmp\entities\MedicineBoxEntity;
 use box_system\pmmp\items\BoxItem;
 use box_system\pmmp\items\SpawnAmmoBoxItem;
+use box_system\pmmp\items\SpawnDecoyBoxItem;
 use box_system\pmmp\items\SpawnFlareBoxItem;
 use box_system\pmmp\items\SpawnMedicineBoxItem;
-use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
@@ -41,6 +41,9 @@ class BoxListener implements Listener
                     case SpawnFlareBoxItem::ITEM_ID:
                         $this->spawnFlareBox($player);
                         break;
+                    case SpawnDecoyBoxItem::ITEM_ID:
+                        $this->spawnDecoyBox($player);
+                        break;
                 }
             }
         }
@@ -62,6 +65,9 @@ class BoxListener implements Listener
                             break;
                         case SpawnFlareBoxItem::ITEM_ID:
                             $this->spawnFlareBox($player);
+                            break;
+                        case SpawnDecoyBoxItem::ITEM_ID:
+                            $this->spawnDecoyBox($player);
                             break;
                     }
                 }
@@ -97,5 +103,16 @@ class BoxListener implements Listener
             $this->plugin->getScheduler());
 
         $flareBox->spawnToAll();
+    }
+
+    public function spawnDecoyBox(Player $player) {
+        $player->getInventory()->remove(new SpawnDecoyBoxItem());
+
+        $decoyBox = new DecoyBoxEntity(
+            $player->getLevel(),
+            $player,
+            $this->plugin->getScheduler());
+
+        $decoyBox->spawnToAll();
     }
 }

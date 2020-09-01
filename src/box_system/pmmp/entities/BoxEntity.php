@@ -17,7 +17,7 @@ abstract class BoxEntity extends GadgetEntity
     /**
      * @var Player
      */
-    private $owner;
+    protected $owner;
 
     public function __construct(Level $level, Player $owner, TaskScheduler $scheduler, ?CompoundTag $nbt = null) {
         $this->owner = $owner;
