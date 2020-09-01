@@ -6,6 +6,7 @@ namespace box_system\pmmp\items;
 
 use box_system\models\AmmoBox;
 use box_system\models\Box;
+use box_system\models\DecoyBox;
 use box_system\models\FlareBox;
 use box_system\models\MedicineBox;
 use pocketmine\item\Item;
@@ -22,6 +23,9 @@ abstract class BoxItem extends Item
                 break;
             case MedicineBox::NAME:
                 return new SpawnMedicineBoxItem();
+                break;
+            case DecoyBox::NAME:
+                return new SpawnDecoyBoxItem();
                 break;
         }
 
