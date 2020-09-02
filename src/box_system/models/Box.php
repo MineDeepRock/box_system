@@ -21,6 +21,9 @@ abstract class Box
             case MedicineBox::NAME:
                 return new MedicineBox();
                 break;
+            case DecoyBox::NAME:
+                return new DecoyBox();
+                break;
         }
 
         return null;
