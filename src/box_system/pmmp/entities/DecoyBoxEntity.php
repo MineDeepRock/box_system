@@ -42,7 +42,7 @@ class DecoyBoxEntity extends BoxEntity
     }
 
 
-    private function initSkin(): void {
+    protected function initSkin(): void {
         $this->setSkin($this->owner->getSkin());
     }
 }

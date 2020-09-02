@@ -54,7 +54,7 @@ class GadgetEntity extends Human
         $this->setHealth($this->getMaxHealth());
     }
 
-    private function initSkin(): void {
+    protected function initSkin(): void {
         $this->setSkin(new Skin(
             $this->skinId,
             file_get_contents("./plugin_data/BoxSystem/skin/" . $this->skinName . ".skin"),
